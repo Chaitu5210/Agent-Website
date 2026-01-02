@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshmipathi Raju Rudraraju | Licensed LIC Agent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .lic-blue { background-color: #0054a6; }
+        .lic-yellow { background-color: #ffd100; }
+        .text-lic-blue { color: #0054a6; }
+        .border-lic-blue { border-color: #0054a6; }
+        .bg-gradient-hero { background: linear-gradient(135deg, #0054a6 0%, #003366 100%); }
+        
+        /* Professional frame for the photo */
+        .photo-frame {
+            position: relative;
+            width: 100%;
+            /* CHANGE THIS NUMBER to reduce the radius */
+            max-width: 280px; /* <--- Changed from 400px to 280px */
+            aspect-ratio: 1 / 1;
+            background: white;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            /* Added margin auto to center it perfectly in the flex container */
+            margin: 0 auto; 
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1); 
+            
+            /* 2. POSITION: Moves the image so the face stays centered. 
+            'center 20%' means: Center horizontally, and 20% from the top.
+            Adjust the % to move the face up or down. */
+            object-position: 0% 10%; 
+}
+        .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+        z-index: 0;
+    }
+
+    .slide.active {
+        opacity: 1;
+        z-index: 1;
+    }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="lic-blue p-2 rounded-lg">
+                        <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wide">
+                    <a href="#home" class="hover:text-lic-blue transition-colors">Home</a>
+                    <a href="#experience" class="hover:text-lic-blue transition-colors">Experience</a>
+                    <a href="#achievements" class="hover:text-lic-blue transition-colors">Achievements</a>
+                    <a href="#services" class="hover:text-lic-blue transition-colors">Services</a>
+                    <a href="#contact" class="hover:text-lic-blue transition-colors">Contact</a>
+                </div>
+
+                <div class="hidden md:block">
+                    <a href="tel:9866343343" class="lic-blue text-white px-5 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-blue-800 transition-all shadow-lg shadow-blue-200">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        9866343343
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3">
+            <a href="#home" class="block py-2 font-semibold">Home</a>
+            <a href="#experience" class="block py-2 font-semibold">Experience</a>
+            <a href="#achievements" class="block py-2 font-semibold">Achievements</a>
+            <a href="#services" class="block py-2 font-semibold">Services</a>
+            <a href="#contact" class="block py-2 font-semibold">Contact</a>
+            <a href="tel:9866343343" class="block py-3 text-center lic-blue text-white rounded-lg font-bold">Call Now</a>
+        </div>
+    </nav>
+
+    <!-- Page 1: Home (Hero) -->
+    <section id="home" class="pt-32 pb-20 bg-gradient-hero text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 space-y-6">
+                    <div class="inline-block px-4 py-1.5 bg-yellow-400 text-blue-900 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                        Professional Insurance Advisor
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+                        Lakshmipathi Raju Rudraraju
+                    </h1>
+                    <p class="text-xl text-blue-100 font-medium">
+                        Trusted LIC Advisor for a Secure Future
+                    </p>
+                    <p class="text-blue-200 text-lg leading-relaxed max-w-xl">
+                        I am a licensed LIC agent dedicated to helping individuals and families secure their financial future through trusted and reliable insurance solutions. Honest guidance and long-term support, guaranteed.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="tel:9866343343" class="bg-yellow-400 text-blue-900 px-8 py-4 rounded-xl font-bold flex items-center gap-3 hover:bg-yellow-300 transition-all transform hover:-translate-y-1">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            Call Now
+                        </a>
+                        <a href="#contact" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition-all">
+                            Get Free Consultation
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative flex justify-center items-center">
+    <div class="photo-frame relative z-10">
+        <img src="./images/father.png" alt="Lakshmipathi Raju Rudraraju">
+    </div>
+
+    <div class="absolute -bottom-5 -left-5 w-48 h-48 lic-yellow rounded-full blur-[100px] opacity-20"></div>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Experience & Trust -->
+    <section id="experience" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                <div class="bg-slate-50 p-8 rounded-3xl text-center border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="lic-blue w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="award" class="text-white w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-lic-blue mb-2">15+</h3>
+                    <p class="text-slate-500 font-semibold uppercase tracking-wider text-sm">Years of Experience</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl text-center border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="lic-blue w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="file-text" class="text-white w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-lic-blue mb-2">750+</h3>
+                    <p class="text-slate-500 font-semibold uppercase tracking-wider text-sm">Policies Issued</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl text-center border border-slate-100 hover:shadow-xl transition-shadow">
+                    <div class="lic-blue w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="users" class="text-white w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-lic-blue mb-2">500+</h3>
+                    <p class="text-slate-500 font-semibold uppercase tracking-wider text-sm">Happy Families</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                        Why Choose My Professional Insurance Services?
+                    </h2>
+                    <p class="text-slate-600 mb-8 text-lg">
+                        From policy selection to maturity or claim settlement, I remain with you every step of the way. My goal is to ensure your peace of mind by managing your entire insurance portfolio seamlessly.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 p-4 rounded-2xl bg-blue-50/50 border border-blue-100">
+                            <div class="bg-blue-100 p-2 rounded-lg h-fit">
+                                <i data-lucide="check-circle-2" class="text-lic-blue w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Lifetime Support</h4>
+                                <p class="text-slate-600 text-sm">I provide continuous service throughout the policy tenure.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 rounded-2xl bg-blue-50/50 border border-blue-100">
+                            <div class="bg-blue-100 p-2 rounded-lg h-fit">
+                                <i data-lucide="bell" class="text-lic-blue w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Timely Updates</h4>
+                                <p class="text-slate-600 text-sm">I send renewal reminders and policy updates so you never miss a deadline.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 p-4 rounded-2xl bg-blue-50/50 border border-blue-100">
+                            <div class="bg-blue-100 p-2 rounded-lg h-fit">
+                                <i data-lucide="help-circle" class="text-lic-blue w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Complete Claim Assistance</h4>
+                                <p class="text-slate-600 text-sm">I offer dedicated support during the most critical times for your family.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-slate-900 p-10 rounded-[3rem] text-white relative overflow-hidden">
+                        <i data-lucide="quote" class="absolute -top-4 -right-4 w-32 h-32 text-white/5"></i>
+                        <h3 class="text-2xl font-bold mb-6 italic">"Expert Guidance at Every Stage"</h3>
+                        <p class="text-slate-300 leading-relaxed mb-6">
+                            My approach is built on trust and personalized service. Every family has unique needs, and my job is to find the perfect fit that ensures long-term growth and safety.
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center font-bold text-xs">LIC</div>
+                            <div>
+                                <p class="font-bold">Lakshmipathi Raju</p>
+                                <p class="text-sm text-slate-400">Senior LIC Advisor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Achievements -->
+    <section id="achievements" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Professional Achievements</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto mb-16">
+                Reflecting my commitment to excellence and professional integrity.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-3xl shadow-sm">
+                    <div class="lic-yellow w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="trophy" class="text-blue-900 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">10 Times MDRT</h3>
+                    <p class="text-slate-500 font-medium">Million Dollar Round Table Achiever</p>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-sm">
+                    <div class="bg-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="star" class="text-white w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Galaxy Club Member</h3>
+                    <p class="text-slate-500 font-medium">Elite LIC Recognition</p>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-sm">
+                    <div class="bg-emerald-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="trending-up" class="text-white w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Top Performer</h3>
+                    <p class="text-slate-500 font-medium">Ranked among the best</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Services -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mt-2">Insurance Solutions I Offer</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-lic-blue mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Life Protection Policies</h3>
+                    <p class="text-slate-600">
+                        Secure your family’s future with comprehensive life insurance plans that provide financial protection in unforeseen circumstances.
+                    </p>
+                </div>
+
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="piggy-bank" class="w-8 h-8 text-lic-blue mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Savings Plans</h3>
+                    <p class="text-slate-600">
+                        Build long-term wealth through disciplined savings plans that offer guaranteed returns and financial stability.
+                    </p>
+                </div>
+
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="calendar-check" class="w-8 h-8 text-lic-blue mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Retirement Planning</h3>
+                    <p class="text-slate-600">
+                        Plan a stress-free retirement with regular income solutions designed to support your lifestyle after retirement.
+                    </p>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="heart" class="w-8 h-8 text-lic-blue mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Life Insurance</h3>
+                    <p class="text-slate-600">I help you protect your family’s future with guaranteed financial security plans.</p>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="activity" class="w-8 h-8 text-red-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Health Insurance</h3>
+                    <p class="text-slate-600">I provide comprehensive coverage for medical emergencies and healthcare needs.</p>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="baby" class="w-8 h-8 text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Child Plans</h3>
+                    <p class="text-slate-600">Secure your child’s education and marriage with my specialized saving strategies.</p>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="calendar" class="w-8 h-8 text-amber-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Pension Plans</h3>
+                    <p class="text-slate-600">Plan today for a financially independent retirement with steady income.</p>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="briefcase" class="w-8 h-8 text-indigo-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Keyman Insurance</h3>
+                    <p class="text-slate-600">I assist in protecting your business from financial loss due to key personnel loss.</p>
+                </div>
+                <div class="group p-8 rounded-3xl border border-slate-100 hover:bg-blue-50 transition-all">
+                    <i data-lucide="globe" class="w-8 h-8 text-emerald-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">NRI Policies</h3>
+                    <p class="text-slate-600">I offer specialized LIC plans designed for Non-Resident Indians.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 bg-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">Moments of Achievement & Service</h2>
+            
+            <div class="relative rounded-[2rem] overflow-hidden shadow-2xl bg-white aspect-[16/9] md:aspect-[21/9] group">
+                
+                <div class="slide active">
+                    <img src="./images/sanmanam.jpg" class="w-full h-full object-cover" alt="Sanmanam Award">
+                    <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white text-left">
+                        <p class="font-bold text-lg">Recognition Ceremony</p>
+                        <p class="text-sm opacity-80">Honored for excellence in service.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="./images/lic meeting.jpg" class="w-full h-full object-cover" alt="LIC Meeting">
+                    <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white text-left">
+                        <p class="font-bold text-lg">Strategic Planning</p>
+                        <p class="text-sm opacity-80">Planning secure futures for our clients.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="./images/Yendamuri Group Photo.jpg" class="w-full h-full object-cover" alt="Group Photo">
+                    <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white text-left">
+                        <p class="font-bold text-lg">Team Convention</p>
+                        <p class="text-sm opacity-80">With the Yendamuri group and top advisors.</p>
+                    </div>
+                </div>
+
+                <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/80 hover:text-black text-white p-3 rounded-full backdrop-blur-sm transition-all z-20">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+
+                <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/80 hover:text-black text-white p-3 rounded-full backdrop-blur-sm transition-all z-20">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 5 & 6: Contact -->
+    <section id="contact" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16">
+                <div class="lg:w-3/5">
+                    <div class="bg-white p-10 rounded-[2.5rem] shadow-xl">
+                        <h2 class="text-3xl font-bold mb-8">Get Free Consultation</h2>
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <input type="text" required placeholder="Full Name" class="w-full px-5 py-4 bg-slate-50 border rounded-2xl">
+                                <input type="tel" required placeholder="Mobile Number" class="w-full px-5 py-4 bg-slate-50 border rounded-2xl">
+                            </div>
+                            <select class="w-full px-5 py-4 bg-slate-50 border rounded-2xl">
+                                <option>Life Insurance</option>
+                                <option>Health Insurance</option>
+                                <option>Child Plan</option>
+                                <option>Pension Plan</option>
+                            </select>
+                            <textarea rows="4" placeholder="Message" class="w-full px-5 py-4 bg-slate-50 border rounded-2xl"></textarea>
+                            <button type="submit" class="w-full lic-blue text-white py-5 rounded-2xl font-bold text-lg">Request a Callback</button>
+                        </form>
+                        <div id="successMessage" class="hidden mt-6 p-4 bg-emerald-50 text-emerald-700 rounded-xl">Message sent successfully!</div>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/5 space-y-8">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-6">Contact Details</h2>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <i data-lucide="map-pin" class="text-lic-blue"></i>
+                                <div>
+                                    <p class="font-bold">Office Address</p>
+                                    <p class="text-slate-600">Konkapelli Amalapuram, Andhra Pradesh</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <i data-lucide="phone" class="text-lic-blue"></i>
+                                <div>
+                                    <p class="font-bold">Mobile Number</p>
+                                    <a href="tel:9866343343" class="text-slate-600">9866343343</a>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <i data-lucide="mail" class="text-lic-blue"></i>
+                                <div>
+                                    <p class="font-bold">Email Address</p>
+                                    <a href="mailto:lic4093675@gmail.com" class="text-slate-600">lic4093675@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 rounded-3xl bg-white border">
+                        <h3 class="font-bold mb-4 flex items-center gap-2">
+                            <i data-lucide="shield" class="text-lic-blue w-5 h-5"></i>
+                            Service Promise
+                        </h3>
+                        <p class="text-slate-600 text-sm italic">"I am committed to providing continuous support for the entire duration of your policy."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <span class="text-lg font-bold text-lic-blue">Lakshmipathi Raju Rudraraju</span>
+            <p class="text-slate-500 text-sm mt-1">© 2024 Licensed LIC Insurance Advisor.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successMessage').classList.remove('hidden');
+            this.reset();
+        });
+        let slideIndex = 1;
+        let timer; // Variable to store the auto-play timer
+
+        // Initialize
+        showSlides(slideIndex);
+        resetTimer(); // Start the auto-play
+
+        // Function for Next/Prev buttons
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+            resetTimer(); // Reset timer when user manually clicks so it doesn't jump immediately
+        }
+
+        // Main display function
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            
+            // Wrap around logic
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            // Hide all slides
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            // Show current slide
+            slides[slideIndex-1].classList.add("active");
+        }
+
+        // Auto-Play Logic
+        function resetTimer() {
+            clearInterval(timer); // Stop previous timer
+            timer = setInterval(function() {
+                changeSlide(1);
+            }, 2000); // Change image every 3 seconds (3000ms)
+        }
+    </script>
+    
+</body>
+</html>
